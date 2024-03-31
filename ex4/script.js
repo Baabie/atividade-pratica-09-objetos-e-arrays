@@ -20,19 +20,19 @@
 // Nome: Alessandro, Idade: 28, Salário: 2700
 // Nome: Alessandro, Idade: 28, Salário: 3000
 
+
 let pessoas = [];
 let continuarCadastro = true;
 
 while (continuarCadastro) {
-  let nome = prompt("Qual seu nome ?");
-  let idade = Number(prompt("Qual sua idade ?"));
-  let trabalho = confirm("Trabalha ?");
+  let nome = prompt("Qual é o seu nome?");
+  let idade = Number(prompt("Qual é a sua idade?"));
+  let trabalho = confirm("Você está trabalhando?");
 
   let salario = 0;
-  {
-    if (trabalho) {
-      salario = Number(prompt("Qual seu salario ?"));
-    }
+  
+  if (trabalho) {
+    salario = Number(prompt("Qual é o seu salário?"));
   }
 
   let pessoa = {
@@ -44,38 +44,38 @@ while (continuarCadastro) {
 
   pessoas.push(pessoa);
 
-  continuarCadastro = confirm("Deseja continuar ?");
+  continuarCadastro = confirm("Deseja continuar cadastrando?");
+}
 
-  let desenpregado = [];
-  let salarioMaior2500 = [];
-  let salarioMenor2500 = [];
+let desempregado = [];
+let salarioMaior2500 = [];
+let salarioMenor2500 = [];
 
-  for (let i = 0; i < pessoas.length; i++) {
-    let pessoa = pessoas[i];
-    if (!pessoa.trabalho) {
-      desenpregado.push(pessoa);
-    } else if (pessoa.salario > 2500) {
-      salarioMaior2500.push(pessoa);
-    } else if (pessoa.salario < 2500) {
-      salarioMenor2500.push(pessoa);
-    }
+for (let i = 0; i < pessoas.length; i++) {
+  let pessoa = pessoas[i];
+  if (!pessoa.trabalho) {
+    desempregado.push(pessoa);
+  } else if (pessoa.salario >= 2500) {
+    salarioMaior2500.push(pessoa);
+  } else {
+    salarioMenor2500.push(pessoa);
   }
 }
 
 document.write(`Pessoas desempregadas: <br>`);
-  for (let i = 0; i < desenpregado.length; i++) {
-    let pessoa = desenpregado[i];
-    document.write(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade} <br>`);
+for (let i = 0; i < desempregado.length; i++) {
+  let pessoa = desempregado[i];
+  document.write(`Nome: ${pessoa.nome}, Idade: ${pessoa.idade} <br>`);
 }
 
-document.write(`Pessoas empregadas com salários maiores que 2500: <br>`);
-  for (let i = 0; i < salariosMaiores2500.length; i++) {
-    document.write(
-      `Nome: ${salarioMaior2500[i].nome}, Salário: ${salarioMaior2500[i].salario} <br> `);
+document.write(`Pessoas empregadas com salários maiores ou iguais a 2500: <br>`);
+for (let i = 0; i < salarioMaior2500.length; i++) {
+  document.write(
+    `Nome: ${salarioMaior2500[i].nome}, Idade: ${salarioMaior2500[i].idade}, Salário: ${salarioMaior2500[i].salario} <br> `);
 }
 
-document.write(`Pessoas empregadas com salários maiores que 2500: <br>`);
-  for (let i = 0; i < salariosMaiores2500.length; i++) {
-    document.write(
-      `Nome: ${salarioMenor2500[i].nome}, Salário: ${salarioMenor2500[i].salario} <br> `);
+document.write(`Pessoas empregadas com salários menores que 2500: <br>`);
+for (let i = 0; i < salarioMenor2500.length; i++) {
+  document.write(
+    `Nome: ${salarioMenor2500[i].nome}, Idade: ${salarioMenor2500[i].idade}, Salário: ${salarioMenor2500[i].salario} <br> `);
 }
